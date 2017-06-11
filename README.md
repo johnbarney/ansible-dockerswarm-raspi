@@ -11,8 +11,8 @@ using the new Docker Engine's "Swarm Mode" (https://docs.docker.com/engine/swarm
 Requirements
 ------------
 
-[Hypriot Raspberry Pi image](https://blog.hypriot.com/)
-Three Raspberry Pis with SSH enabled, and the hostnames swarm-1, swarm-2, and swarm-3
+* [Hypriot Raspberry Pi image](https://blog.hypriot.com/)
+* Three Raspberry Pis with SSH enabled, and the hostnames swarm-1, swarm-2, and swarm-3
 
 
 Usage
