@@ -1,0 +1,11 @@
+[docker_engine]
+swarm-1 ansible_user=pirate
+swarm-2 ansible_user=pirate
+swarm-3 ansible_user=pirate
+
+[docker_swarm_manager]
+swarm-1
+
+[docker_swarm_worker]
+swarm-2
+swarm-3

@@ -1,0 +1,26 @@
+---
+# Makes sure that the repo cache is fresh
+- name: Package Maintence
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+    upgrade: dist
+    autoremove: yes
+
+- name: Install raspi-config
+  apt:
+    name: raspi-config
+    state: latest
+
+- name: Get disk info
+  shell: df -h
+  changed_when: False
+  register: disk_info
+
+- name: Expand File System
+  shell: raspi-config --expand-rootfs
+  become: true
+  when: "disk_info.stdout.find('/dev/root        14G') == -1"
+
+# Setup the Docker Swarm Cluster
+- include: swarm_cluster.yml
