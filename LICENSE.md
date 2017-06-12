@@ -1,6 +1,7 @@
 MIT License
 
 Copyright (c) 2016 Andrea Tosatto
+
 Copyright (c) 2017 John Barney
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
