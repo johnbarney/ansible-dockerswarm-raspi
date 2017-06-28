@@ -11,9 +11,8 @@ using the new Docker Engine's "Swarm Mode" (https://docs.docker.com/engine/swarm
 Requirements
 ------------
 
-* [Hypriot Raspberry Pi image](https://blog.hypriot.com/)
-* Three Raspberry Pis with SSH enabled, and the hostnames swarm-1, swarm-2, and swarm-3
-
+* Three Raspberry Pis running Raspbian Lite with SSH enabled, and the hostnames swarm-1, swarm-2, and swarm-3
+* Optional a fourth pi to run ansible from.
 
 Usage
 -----
@@ -22,13 +21,19 @@ Start by generating SSH keys if you haven't already.
 
     ssh-keygen
 
-Copy keys to your to-be swarm cluster. The password is 'hypriot' by default.
+Copy keys to your to-be swarm cluster. The password is 'raspberry' by default.
 
-    ssh-copy-id pirate@swarm-1
-    ssh-copy-id pirate@swarm-2
-    ssh-copy-id pirate@swarm-3
+    ssh-copy-id swarm-1
+    ssh-copy-id swarm-2
+    ssh-copy-id swarm-3
 
-Finally, run the command to configure your swarm cluster:
+Remove password from pi account on swarm (for security, optional)
+
+    ssh swarm-1 sudo passwd -d pi
+    ssh swarm-2 sudo passwd -d pi
+    ssh swarm-3 sudo passwd -d pi
+
+Finally, run the command to configure your swarm cluster from this repo:
 
     ansible-playbook dockerswarm.yml -b -i hosts
 
@@ -43,9 +48,9 @@ Example Playbook
     $ cat hosts
 
     [docker_engine]
-    swarm-1 ansible_user=pirate
-    swarm-2 ansible_user=pirate
-    swarm-3 ansible_user=pirate
+    swarm-1
+    swarm-2
+    swarm-3
 
     [docker_swarm_manager]
     swarm-1
